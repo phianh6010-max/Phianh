@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gen Z Text Animation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Rubik', sans-serif;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    @keyframes gradientBG {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    .container {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .letter {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: appear 0.5s forwards;
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="text"></div>
+
+  <script>
+    const message = "Hahahha nhìn ccc, ok đc ko?"; // chữ bạn muốn hiện ra
+    const container = document.getElementById('text');
+
+    message.split('').forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.className = 'letter';
+      span.style.animationDelay = `${i * 0.1}s`; // mỗi chữ delay 0.1s
+      container.appendChild(span);
+    });
+  </script>
+</body>
+</html>
